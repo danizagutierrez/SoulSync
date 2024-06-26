@@ -3,16 +3,12 @@ package com.example.soulsync;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class LogInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Toast.makeText(this, "Test change", Toast.LENGTH_SHORT).show();
-
+        setContentView(R.layout.activity_log_in);
     }
 }

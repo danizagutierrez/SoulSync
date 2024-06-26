@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_fragment_one"
+        android:title="Journal" />
+    <item
+        android:id="@+id/navigation_fragment_two"
+        android:title="Mindfulness" />
+    <item
+        android:id="@+id/navigation_fragment_three"
+        android:title="Account - Profile" />
+    <item
+        android:id="@+id/navigation_fragment_four"
+        android:title="Help" />
+    <item
+        android:id="@+id/navigation_fragment_five"
+        android:title="Settings" />
+
+
+</menu>
