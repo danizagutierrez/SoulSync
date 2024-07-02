@@ -2,6 +2,9 @@
     <string name="app_name">SoulSync</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <!-- Sign Up page -->
     <string name="upload_pic">Upload Picture</string>
     <string name="btnCreateAccount">Create Account</string>
     <string name="editEmailHint">Email</string>
@@ -9,4 +12,23 @@
     <string name="editLName">Last Name</string>
     <string name="editTxtPassword">Password</string>
     <string name="editConfPassword">Confirm Password</string>
+
+    <!-- Log in Page -->
+    <string name="txtViewWelcome">Welcome!</string>
+    <string name="editTxtUsername">Email</string>
+    <string name="btnLogIn">Log in</string>
+    <string name="btnForgot">Forgot password?</string>
+    <string name="txtViewSignUp">Sign up</string>
+    <string name="txtViewSignUpOption">You don\'t have an account?</string>
+    <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
+    <string name="txtGoogleIn">Or connect with</string>
+
+
+    <!-- Account Fragment -->
+    <string name="my_account_title">My Account</string>
+    <string name="btnUpdateProfile">Update</string>
+    <string name="logout_legend">Logout</string>
+
+
+
 </resources>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "507379782042",
+    "project_id": "soulsync-93a73",
+    "storage_bucket": "soulsync-93a73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507379782042:android:e3c5c30b8d5f30fda3aa23",
+        "android_client_info": {
+          "package_name": "com.example.soulsync"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "507379782042-e0hknf0inlo40ub1qnucaku73m7eeakl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.soulsync",
+            "certificate_hash": "ee5317988ac6b636fec5247b6a7692439d42346e"
+          }
+        },
+        {
+          "client_id": "507379782042-4fnou44a1a8g105c5sndacvit74njqr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcKBVtE1loztEotBo1fdzyV4YSZkiQTVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "507379782042-4fnou44a1a8g105c5sndacvit74njqr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

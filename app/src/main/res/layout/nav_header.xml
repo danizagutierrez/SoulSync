@@ -8,22 +8,27 @@
     android:gravity="bottom">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_user" />
+        android:id="@+id/drawerPic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        />
 
     <TextView
+        android:id="@+id/drawerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
         android:text="Username"
         android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:paddingTop="8dp" />
+        android:textSize="20sp" />
 
     <TextView
+        android:id="@+id/drawerEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="4dp"
         android:text="user@example.com"
-        android:textColor="@android:color/white"
-        android:paddingTop="4dp" />
+        android:textColor="@android:color/white" />
 </LinearLayout>
