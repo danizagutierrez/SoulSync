@@ -16,6 +16,8 @@
     <item
         android:id="@+id/navigation_fragment_five"
         android:title="Settings" />
-
+    <item
+        android:id="@+id/navigation_fragment_six"
+        android:title="Home" />
 
 </menu>

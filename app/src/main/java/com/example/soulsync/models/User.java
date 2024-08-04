@@ -1,4 +1,4 @@
-package com.example.soulsync;
+package com.example.soulsync.models;
 
 public class User {
 
@@ -6,6 +6,9 @@ public class User {
     public String userLName;
     public String email;
     public String photoID;
+
+    public User() {
+    }
 
     public User(String userFName, String userLName, String email, String photoID) {
         this.userFName = userFName;

@@ -1,10 +1,11 @@
-package com.example.soulsync;
+package com.example.soulsync.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.soulsync.R;
 import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {

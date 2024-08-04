@@ -1,0 +1,12 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF" /> <!-- Background color -->
+    <corners android:radius="16dp" /> <!-- Adjust the radius for rounded corners -->
+    <stroke
+        android:width="2dp"
+        android:color="#CCCCCC" /> <!-- Optional: Border color and width -->
+    <padding
+        android:left="8dp"
+        android:top="8dp"
+        android:right="8dp"
+        android:bottom="8dp" /> <!-- Optional: Padding inside the EditText -->
+</shape>

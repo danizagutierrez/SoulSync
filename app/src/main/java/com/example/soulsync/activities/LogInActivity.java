@@ -1,24 +1,23 @@
-package com.example.soulsync;
+package com.example.soulsync.activities;
 
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.soulsync.databinding.ActivityHomeBinding;
+import com.example.soulsync.R;
 import com.example.soulsync.databinding.ActivityLogInBinding;
-import com.example.soulsync.fragments.AccountFragment;
+import com.example.soulsync.models.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,12 +29,8 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthMultiFactorException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.auth.MultiFactorResolver;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LogInActivity extends AppCompatActivity {
@@ -84,8 +79,6 @@ public class LogInActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-
-
 
         //log in button
         binding.btnLogIn.setOnClickListener(new View.OnClickListener() {
@@ -197,11 +190,21 @@ public class LogInActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
 
         if(user == null){
+
             Intent intent = new Intent(this, LogInActivity.class);
             startActivity(intent);
+            finish();
+            //logout(this);
         }else{
+            SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isLoggedIn", true);
+            editor.putString("userId", user.getUid()); // Optional: store user ID
+            editor.apply();
+
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
+            finish();
         }
 
     }
@@ -220,29 +223,73 @@ public class LogInActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-//            reload();
+ //   @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        // Check SharedPreferences for login state
+//        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+//        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+//
+//        if (isLoggedIn) {
+//            // User is logged in, proceed to HomeActivity
+//            Intent intent = new Intent(this, HomeActivity.class);
+//            intent.putExtra("openFragment", "HomeFragment");
+//            startActivity(intent);
+//            finish(); // Close the login activity
+//        } else {
+//            // Check if user is signed in with Firebase (this is already handled in your code)
+//            FirebaseUser currentUser = mAuth.getCurrentUser();
+//            if (currentUser != null) {
+//                updateUI(currentUser);
+//            }
+//            else{
+//
+//            }
+//        }
+//
+//    }
 
-
-        }
-    }
-
-    public void logout() {
+    public void logout(Context context) {
         // Firebase sign out
-        mAuth.signOut();
+
+        if (mAuth != null) {
+            mAuth.signOut();
+        }
+
 
         // Google sign out
-        gClient.signOut().addOnCompleteListener(this, task -> {
-            Intent intent = new Intent(LogInActivity.this, LogInActivity.class);
+        if (gClient != null) {
+            gClient.signOut().addOnCompleteListener((Activity) context, task -> {
+                // Clear the login state in SharedPreferences
+                SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear(); // Clear all saved data
+                editor.apply();
+
+                // Redirect to the LogInActivity
+                Intent intent = new Intent(context, LogInActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            });
+        } else {
+            //Handle case where gClient is not initialized
+            Log.e("Logout", "GoogleSignInClient not initialized");
+
+            // Perform the same actions as above to ensure the user is logged out
+            SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear(); // Clear all saved data
+            editor.apply();
+
+            Intent intent = new Intent(context, LogInActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
-        });
+
+        }
+
     }
 
 
